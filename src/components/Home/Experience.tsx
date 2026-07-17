@@ -70,21 +70,21 @@ export default function Experience() {
           </div>
 
           <div className="w-full flex flex-col items-center justify-center">
-            <div className="relative flex items-center justify-center w-full max-w-500px mb-6">
+            <div className="relative flex items-center justify-center w-full max-w-400px sm:max-w-500px mb-6">
               <button
                 onClick={handlePrev}
-                className="absolute left-2 sm:-left-12 z-20 text-2xl sm:text-3xl text-brand-gold/60 hover:text-brand-gold transition-colors duration-300 font-serif p-2.5 sm:p-2 bg-background/80 sm:bg-transparent rounded-full border border-brand-gold/15 sm:border-none shadow-sm sm:shadow-none cursor-pointer select-none"
+                className="hidden sm:block absolute -left-12 lg:-left-16 z-20 text-2xl sm:text-3xl text-brand-gold/50 hover:text-brand-gold transition-colors duration-300 font-serif p-2 cursor-pointer select-none"
               >
                 «
               </button>
 
-              <div className="relative w-full aspect-4/5 lg:aspect-4/3 rounded-2xl border border-brand-gold/30 bg-background p-3 sm:p-4 overflow-hidden">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-brand-card flex items-center justify-center">
+              <div className="relative w-full aspect-4/3 rounded-2xl border border-brand-gold/25 bg-brand-card/30 p-2 sm:p-4 overflow-hidden">
+                <div className="relative w-full h-full rounded-xl overflow-hidden flex items-center justify-center">
                   <Image
                     src={certificates[currentIndex]}
                     alt={`Сертифікат ${currentIndex + 1}`}
                     fill
-                    className="object-contain p-1"
+                    className="object-contain"
                     sizes="(max-w-500px) 100vw, 500px"
                     priority
                   />
@@ -93,18 +93,40 @@ export default function Experience() {
 
               <button
                 onClick={handleNext}
-                className="absolute right-2 sm:-right-12 z-20 text-2xl sm:text-3xl text-brand-gold/60 hover:text-brand-gold transition-colors duration-300 font-serif p-2.5 sm:p-2 bg-background/80 sm:bg-transparent rounded-full border border-brand-gold/15 sm:border-none shadow-sm sm:shadow-none cursor-pointer select-none"
+                className="hidden sm:block absolute -right-12 lg:-right-16 z-20 text-2xl sm:text-3xl text-brand-gold/50 hover:text-brand-gold transition-colors duration-300 font-serif p-2 cursor-pointer select-none"
               >
                 »
               </button>
             </div>
 
-            <Link
-              href="/experience"
-              className="text-xs sm:text-sm text-brand-gold/70 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
-            >
-              Ознайомитися з дипломами та статистикою
-            </Link>
+            <div className="flex flex-col items-center gap-5 w-full">
+              <div className="flex items-center gap-8 sm:hidden">
+                <button
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-full border border-brand-gold/20 flex items-center justify-center text-brand-gold text-lg bg-brand-card/40 active:bg-brand-card/80 transition-all"
+                  aria-label="Попередній сертифікат"
+                >
+                  «
+                </button>
+                <span className="text-xs text-brand-gold/60 font-serif italic">
+                  {currentIndex + 1} / {certificates.length}
+                </span>
+                <button
+                  onClick={handleNext}
+                  className="w-10 h-10 rounded-full border border-brand-gold/20 flex items-center justify-center text-brand-gold text-lg bg-brand-card/40 active:bg-brand-card/80 transition-all"
+                  aria-label="Наступний сертифікат"
+                >
+                  »
+                </button>
+              </div>
+
+              <Link
+                href="/experience"
+                className="text-xs sm:text-sm text-brand-gold/70 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
+              >
+                Ознайомитися з дипломами та статистикою
+              </Link>
+            </div>
           </div>
         </div>
       </Container>
