@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #004c3d;
+  --foreground: #c2a85c;
+  --color-gold: #e5c158;
+  --color-dark-green: #074031;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-gold: var(--color-gold);
+  --color-brand-card: var(--color-dark-green);
+  --font-serif: var(--font-cormorant), serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-serif);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+header,
+main,
+footer {
+  width: 100%;
+}
