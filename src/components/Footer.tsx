@@ -7,9 +7,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#03362A] border-t border-brand-gold/10 py-10 sm:py-14 text-brand-gold font-serif">
       <Container>
-        {/* Головна сітка: на мобільних усе в один стовпчик, на десктопі — ідеальні 3 рівні колонки */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8 w-full">
-          {/* 1. ЛІВА КОЛОНКА: Логотип-фото (притиснутий ліворуч на ПК, по центру на мобільних) */}
           <div className="flex justify-center md:justify-start">
             <div className="relative w-24 h-24 transition-transform duration-300 hover:scale-105">
               <NextImage
@@ -22,9 +20,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 2. ЦЕНТРАЛЬНА КОЛОНКА: Опис, соцмережі та копірайт (завжди суворо по центру) */}
           <div className="flex flex-col items-center text-center space-y-6 md:w-full">
-            {/* Опис спеціаліста з безпечним екрануванням апострофа */}
             <p className="text-xs sm:text-sm italic font-light tracking-wide leading-relaxed">
               <span className="block md:whitespace-nowrap">
                 Лілія Каревич — фізичний терапевт, спеціаліст з руху
@@ -34,9 +30,7 @@ export default function Footer() {
               </span>
             </p>
 
-            {/* Круглі соцмережі */}
             <div className="flex items-center gap-5">
-              {/* Facebook */}
               <a
                 href="https://www.facebook.com/LKperfectBody"
                 target="_blank"
@@ -49,7 +43,6 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/lilijakarevich?igsh=M3AycngxZ2x4NDQ0"
                 target="_blank"
@@ -67,7 +60,6 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Telegram */}
               <a
                 href="https://t.me/LKBody"
                 target="_blank"
@@ -81,13 +73,11 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Копірайт — h-[1px] замінено на h-px (якщо десь знадобиться лінія, а тут чистий текст) */}
             <p className="text-[10px] sm:text-xs text-brand-gold/60 italic font-light tracking-wide">
               © 2026 Perfect Body LK. Кожен рух має значення.
             </p>
           </div>
 
-          {/* 3. ПРАВА КОЛОНКА: Порожня (потрібна для створення ідеальної симетрії на ПК) */}
           <div className="hidden md:block"></div>
         </div>
       </Container>

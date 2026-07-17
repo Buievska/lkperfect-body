@@ -4,10 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Container from "@/components/Container";
 
-// Тип для активного табу
 type Tab = "diplomas" | "statistics";
 
-// Тимчасові дані для дипломів (вкажи реальні шляхи до картинок у "image")
 const diplomasData = [
   { id: 1, title: "Диплом Фізіотерапевта", image: "/certificate-19.jpg" },
   { id: 2, title: "Диплом Дієтолога", image: "/certificate-20.jpg" },
@@ -66,7 +64,6 @@ const diplomasData = [
   { id: 22, title: "Сертифікат дитячий масаж", image: "/certificate-21.jpg" },
 ];
 
-// Дані статистики зверху
 const statisticsData = [
   { label: "Постава та симетрія тіла", percentage: 40 },
   { label: "Біль у спині та попереку", percentage: 30 },
@@ -74,7 +71,6 @@ const statisticsData = [
   { label: "Інше (реабілітація, спорт)", percentage: 10 },
 ];
 
-// Етапи тижнів відновлення
 const timelineWeeks = [
   { label: "Тиждень 1-2", val: "20%" },
   { label: "Тиждень 3-4", val: "45%" },
@@ -82,7 +78,6 @@ const timelineWeeks = [
   { label: "Тиждень 10-12", val: "95%+" },
 ];
 
-// Етапи одужання (список знизу)
 const steps = [
   "Усунення симптомів та болю",
   "Відновлення рухливості суглобів",
@@ -93,14 +88,12 @@ const steps = [
 export default function ExperiencePage() {
   const [activeTab, setActiveTab] = useState<Tab>("diplomas");
 
-  // Стан для індексу відкритого сертифіката (null — закрита галерея)
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Керування навігацією галереї
   const handleClose = () => setActiveIndex(null);
 
   const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation(); // запобігаємо закриттю при кліку на кнопку
+    e.stopPropagation();
     if (activeIndex !== null) {
       setActiveIndex((prev) =>
         prev === 0 ? diplomasData.length - 1 : (prev as number) - 1,
@@ -109,7 +102,7 @@ export default function ExperiencePage() {
   };
 
   const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation(); // запобігаємо закриттю при кліку на кнопку
+    e.stopPropagation();
     if (activeIndex !== null) {
       setActiveIndex((prev) =>
         prev === diplomasData.length - 1 ? 0 : (prev as number) + 1,
@@ -117,7 +110,6 @@ export default function ExperiencePage() {
     }
   };
 
-  // Керування клавішами (Esc, ←, →) та блокування скролу
   useEffect(() => {
     if (activeIndex === null) return;
 
@@ -134,23 +126,21 @@ export default function ExperiencePage() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden"; // ховаємо скрол сайту
+    document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = ""; // повертаємо скрол
+      document.body.style.overflow = "";
     };
   }, [activeIndex]);
 
   return (
     <main className="w-full min-h-screen bg-background pt-28 pb-20 sm:pt-36 sm:pb-32">
       <Container className="flex flex-col items-center">
-        {/* Головний заголовок сторінки */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold text-center mb-12 sm:mb-16">
           Мій досвід
         </h1>
 
-        {/* Перемикач табів (Дипломи / Статистика) */}
         <div className="flex justify-center items-center w-full max-w-lg border-b border-brand-gold/10 mb-12 sm:mb-16">
           <button
             onClick={() => setActiveTab("diplomas")}
@@ -174,7 +164,6 @@ export default function ExperiencePage() {
           </button>
         </div>
 
-        {/* ================= ВМІСТ ТАБУ: ДИПЛОМИ ================= */}
         {activeTab === "diplomas" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
             {diplomasData.map((diploma, index) => (
@@ -183,16 +172,10 @@ export default function ExperiencePage() {
                 onClick={() => setActiveIndex(index)}
                 className="flex flex-col rounded-2xl border border-brand-gold/20 overflow-hidden bg-brand-card hover:border-brand-gold/50 transition-all duration-300 group cursor-pointer"
               >
-                {/* 
-                  Рамка для картинки сертифіката.
-                  Клас aspect-[4/3] оптимізовано до aspect-4/3
-                */}
                 <div className="aspect-4/3 w-full bg-background/50 flex items-center justify-center p-6 border-b border-brand-gold/10">
                   <div className="relative w-full h-full rounded-lg bg-brand-card flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
-                    {/* Текстовий плейсхолдер (зникне під картинкою, коли вона завантажиться) */}
                     <span className="absolute z-0 text-brand-gold/30 font-serif italic text-sm"></span>
 
-                    {/* Реальне зображення */}
                     <Image
                       src={diploma.image}
                       alt={`Сертифікат ${diploma.id}`}
@@ -201,7 +184,7 @@ export default function ExperiencePage() {
                     />
                   </div>
                 </div>
-                {/* Підпис знизу */}
+
                 <div className="py-4 text-center bg-brand-card/90">
                   <span className="text-brand-gold font-serif italic text-sm sm:text-base">
                     {diploma.title}
@@ -212,10 +195,8 @@ export default function ExperiencePage() {
           </div>
         )}
 
-        {/* ================= ВМІСТ ТАБУ: СТАТИСТИКА ================= */}
         {activeTab === "statistics" && (
           <div className="w-full max-w-3xl flex flex-col space-y-16">
-            {/* Блок з прогрес-барами зверху */}
             <div className="space-y-6">
               {statisticsData.map((item, index) => (
                 <div key={index} className="space-y-2">
@@ -223,10 +204,7 @@ export default function ExperiencePage() {
                     <span>{item.label}</span>
                     <span className="text-brand-gold">{item.percentage}%</span>
                   </div>
-                  {/* 
-                    Лінія прогресу.
-                    Клас h-[2px] оптимізовано до сучасного h-0.5
-                  */}
+
                   <div className="h-0.5 w-full bg-brand-gold/10 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-brand-gold transition-all duration-1000 ease-out"
@@ -237,21 +215,17 @@ export default function ExperiencePage() {
               ))}
             </div>
 
-            {/* Великий вкладений контейнер з темною заливкою для таймлайну */}
             <div className="w-full bg-brand-card/40 border border-brand-gold/10 rounded-3xl p-6 sm:p-10 space-y-12">
-              {/* Горизонтальні графічні стовпчики (Динаміка тижнів) */}
               <div className="space-y-8">
                 {timelineWeeks.map((week, idx) => (
                   <div
                     key={idx}
                     className="flex flex-col items-center text-center space-y-2"
                   >
-                    {/* Текст проценту зверху */}
                     <span className="text-xs sm:text-sm font-serif italic text-brand-gold/80">
                       {week.val}
                     </span>
 
-                    {/* Товста лінія динаміки */}
                     <div className="w-full h-8 sm:h-10 rounded-md bg-brand-gold/5 border border-brand-gold/10 relative overflow-hidden">
                       <div
                         className="h-full bg-brand-gold/30 rounded-r-md transition-all duration-1000"
@@ -262,7 +236,6 @@ export default function ExperiencePage() {
                       />
                     </div>
 
-                    {/* Назва періоду знизу */}
                     <span className="text-xs sm:text-sm font-serif italic text-brand-gold/60">
                       {week.label}
                     </span>
@@ -270,18 +243,16 @@ export default function ExperiencePage() {
                 ))}
               </div>
 
-              {/* Нумеровані кроки відновлення */}
               <div className="space-y-6 pt-4 border-t border-brand-gold/5">
                 {steps.map((text, idx) => (
                   <div
                     key={idx}
                     className="flex items-center gap-4 sm:gap-6 text-left"
                   >
-                    {/* Кружечок з номером */}
                     <div className="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold font-serif text-sm shrink-0">
                       {idx + 1}
                     </div>
-                    {/* Опис кроку */}
+
                     <p className="text-sm sm:text-base text-foreground/90 font-serif italic font-light">
                       {text}
                     </p>
@@ -293,13 +264,11 @@ export default function ExperiencePage() {
         )}
       </Container>
 
-      {/* ================= ГАЛЕРЕЯ НА ВЕСЬ ЕКРАН (ЛАЙТБОКС) ================= */}
       {activeIndex !== null && (
         <div
           onClick={handleClose}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm transition-opacity duration-300"
         >
-          {/* Кнопка Закрити (Хрестик) */}
           <button
             onClick={handleClose}
             className="absolute top-6 right-6 text-brand-gold/70 hover:text-brand-gold p-2 cursor-pointer transition-colors z-50"
@@ -319,7 +288,6 @@ export default function ExperiencePage() {
             </svg>
           </button>
 
-          {/* Кнопка Попередній */}
           <button
             onClick={handlePrev}
             className="absolute left-4 sm:left-8 text-brand-gold/70 hover:text-brand-gold p-3 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 cursor-pointer bg-[#03362A]/40 backdrop-blur-md transition-all duration-300 z-50"
@@ -339,9 +307,8 @@ export default function ExperiencePage() {
             </svg>
           </button>
 
-          {/* Вміст слайдера */}
           <div
-            onClick={(e) => e.stopPropagation()} // Захист від закриття при кліку на зображення
+            onClick={(e) => e.stopPropagation()}
             className="relative w-[90vw] h-[70vh] max-w-4xl flex flex-col items-center justify-center"
           >
             <div className="relative w-full h-full flex items-center justify-center">

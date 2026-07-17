@@ -25,7 +25,6 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* ================= НАВІГАЦІЯ ПО ЦЕНТРУ ================= */}
           <nav className="hidden lg:flex items-center gap-8 font-serif text-brand-gold/90 text-base xl:text-lg mx-auto">
             <Link
               href="/#about"
@@ -59,7 +58,6 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* ================= КНОПКА ДЗВІНКА СПРАВА ================= */}
           <div className="hidden lg:block shrink-0">
             <a
               href={`tel:${phoneNumber}`}
@@ -69,7 +67,6 @@ export default function Header() {
             </a>
           </div>
 
-          {/* ================= БУРГЕР-КНОПКА ДЛЯ МОБІЛЬНИХ ================= */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}

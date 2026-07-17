@@ -28,27 +28,20 @@ export default function Experience() {
   };
 
   return (
-    // Додано id="experience" для якірного переходу з меню хедера
     <section id="experience" className="w-full py-16 md:py-24 bg-background">
       <Container>
-        {/* Грід: на мобільках все в один стовпчик, на десктопі ділимо порівну 50/50 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
-          {/* ================= ЛІВА КОЛОНКА: ТЕКСТ та СПИСОК ================= */}
           <div className="flex flex-col items-start text-left space-y-6 w-full">
-            {/* Надзаголовок */}
             <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif">
               Кваліфікація та досвід
             </span>
 
-            {/* Заголовок */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-gold leading-tight">
               Досвід, на який ви можете покластися
             </h2>
 
-            {/* Лінія розмежування — h-[1px] оптимізовано до h-px */}
             <div className="w-20 h-px bg-brand-gold/40"></div>
 
-            {/* Короткий опис */}
             <div className="space-y-2 text-base sm:text-lg text-foreground/95 font-serif italic font-light leading-relaxed">
               <p>Освіта у двох країнах та з різних дисциплін.</p>
               <p className="text-brand-gold/90">
@@ -56,7 +49,6 @@ export default function Experience() {
               </p>
             </div>
 
-            {/* Список напрямків — h-[1px] оптимізовано до h-px */}
             <ul className="space-y-4 pt-4 text-sm sm:text-base text-foreground/90 font-serif italic font-light w-full">
               <li className="flex items-center gap-4">
                 <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
@@ -77,51 +69,39 @@ export default function Experience() {
             </ul>
           </div>
 
-          {/* ================= ПРАВА КОЛОНКА: СЛАЙДЕР СЕРТИФІКАТІВ ================= */}
           <div className="w-full flex flex-col items-center justify-center">
-            {/* 
-              Контейнер слайдера з боковими стрілочками-навігацією.
-              Клас max-w-[500px] оптимізовано до сучасного max-w-500px.
-            */}
-            <div className="flex items-center justify-between w-full max-w-500px gap-4 sm:gap-6 mb-6">
-              {/* Ліва стрілочка « */}
+            <div className="relative flex items-center justify-center w-full max-w-500px mb-6">
               <button
                 onClick={handlePrev}
-                className="text-2xl sm:text-3xl text-brand-gold/40 hover:text-brand-gold transition-colors duration-300 font-serif p-2 cursor-pointer select-none"
+                className="absolute left-2 sm:-left-12 z-20 text-2xl sm:text-3xl text-brand-gold/60 hover:text-brand-gold transition-colors duration-300 font-serif p-2.5 sm:p-2 bg-background/80 sm:bg-transparent rounded-full border border-brand-gold/15 sm:border-none shadow-sm sm:shadow-none cursor-pointer select-none"
               >
                 «
               </button>
 
-              {/* 
-                Рамка з активним сертифікатом.
-                Клас aspect-[4/3] замінено на aspect-4/3.
-              */}
-              <div className="relative flex-1 aspect-4/3 rounded-2xl border border-brand-gold/30 bg-background p-3 sm:p-4 overflow-hidden">
+              <div className="relative w-full aspect-4/5 lg:aspect-4/3 rounded-2xl border border-brand-gold/30 bg-background p-3 sm:p-4 overflow-hidden">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-brand-card flex items-center justify-center">
-                  {/* Тимчасова заглушка для зображення сертифіката */}
-
                   <Image
                     src={certificates[currentIndex]}
                     alt={`Сертифікат ${currentIndex + 1}`}
                     fill
-                    className="object-contain"
+                    className="object-contain p-1"
+                    sizes="(max-w-500px) 100vw, 500px"
+                    priority
                   />
                 </div>
               </div>
 
-              {/* Права стрілочка » */}
               <button
                 onClick={handleNext}
-                className="text-2xl sm:text-3xl text-brand-gold/40 hover:text-brand-gold transition-colors duration-300 font-serif p-2 cursor-pointer select-none"
+                className="absolute right-2 sm:-right-12 z-20 text-2xl sm:text-3xl text-brand-gold/60 hover:text-brand-gold transition-colors duration-300 font-serif p-2.5 sm:p-2 bg-background/80 sm:bg-transparent rounded-full border border-brand-gold/15 sm:border-none shadow-sm sm:shadow-none cursor-pointer select-none"
               >
                 »
               </button>
             </div>
 
-            {/* Кнопка-посилання на окрему сторінку досвіду */}
             <Link
               href="/experience"
-              className="text-xs sm:text-sm text-brand-gold/70 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300"
+              className="text-xs sm:text-sm text-brand-gold/70 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
             >
               Ознайомитися з дипломами та статистикою
             </Link>

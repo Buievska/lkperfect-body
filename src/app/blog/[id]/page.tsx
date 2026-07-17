@@ -8,28 +8,26 @@ import { client, urlFor } from "@/lib/sanity";
 import Container from "@/components/Container";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 
-// Інтерфейс для детальної статті з Sanity (позбулися any)
 interface BlogPost {
   _id: string;
   title: string;
   publishedAt: string;
   categoryName?: string;
   mainImage?: Record<string, unknown>;
-  gallery?: Record<string, unknown>[]; // Додаткові фото
-  body: Record<string, unknown>[]; // Вміст статті (Portable Text)
+  gallery?: Record<string, unknown>[];
+  body: Record<string, unknown>[];
 }
 
 export default function BlogPostPage() {
   const params = useParams();
   const router = useRouter();
-  const slug = params?.id as string; // або params?.slug залежно від назви папки
+  const slug = params?.id as string;
 
   const [article, setArticle] = useState<BlogPost | null>(null);
   const [images, setImages] = useState<Record<string, unknown>[]>([]);
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 1. Завантаження статті з Sanity за її slug
   useEffect(() => {
     if (!slug) return;
 
@@ -37,7 +35,6 @@ export default function BlogPostPage() {
       try {
         setIsLoading(true);
 
-        // GROQ-запит для отримання конкретної статті
         const query = `*[_type == "post" && slug.current == $slug][0] {
           _id,
           title,
@@ -53,7 +50,6 @@ export default function BlogPostPage() {
         if (data) {
           setArticle(data);
 
-          // Формуємо масив зображень для галереї (головне + додаткові з gallery)
           const allImages: Record<string, unknown>[] = [];
           if (data.mainImage) {
             allImages.push(data.mainImage);
@@ -73,7 +69,6 @@ export default function BlogPostPage() {
     fetchArticle();
   }, [slug]);
 
-  // Навігація галереї
   const handlePrevPhoto = () => {
     setActivePhotoIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
@@ -82,7 +77,6 @@ export default function BlogPostPage() {
     setActivePhotoIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  // Кастомні компоненти для рендерингу Portable Text (позбулися any)
   const portableTextComponents: PortableTextComponents = {
     block: {
       normal: ({ children }) => (
@@ -103,7 +97,6 @@ export default function BlogPostPage() {
     },
   };
 
-  // 1. Стан завантаження
   if (isLoading) {
     return (
       <main className="w-full min-h-screen bg-background pt-32 text-center">
@@ -117,7 +110,6 @@ export default function BlogPostPage() {
     );
   }
 
-  // 2. Якщо статтю не знайдено
   if (!article) {
     return (
       <main className="w-full min-h-screen bg-background pt-32 text-center">
@@ -133,11 +125,10 @@ export default function BlogPostPage() {
     );
   }
 
-  // Форматування дати: виправлено "Long" на "long"
   const formattedDate = article.publishedAt
     ? new Date(article.publishedAt).toLocaleDateString("uk-UA", {
         day: "numeric",
-        month: "long", // Тепер усе валідно для TS!
+        month: "long",
         year: "numeric",
       })
     : "";
@@ -145,7 +136,6 @@ export default function BlogPostPage() {
   return (
     <main className="w-full min-h-screen bg-background pt-28 pb-20 sm:pt-36 sm:pb-32">
       <Container className="max-w-4xl">
-        {/* Кнопка "Назад" */}
         <button
           onClick={() => router.back()}
           className="inline-flex items-center gap-2 text-xs sm:text-sm text-brand-gold/60 hover:text-brand-gold font-serif italic mb-8 transition-colors cursor-pointer"
@@ -153,7 +143,6 @@ export default function BlogPostPage() {
           <span>← Назад</span>
         </button>
 
-        {/* Хедер поста */}
         <div className="flex flex-col items-start text-left space-y-4 mb-8 sm:mb-12">
           <div className="flex items-center gap-4 text-xs sm:text-sm font-serif italic text-brand-gold/50">
             <span>{article.categoryName || "Без категорії"}</span>
@@ -164,17 +153,12 @@ export default function BlogPostPage() {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-gold leading-tight">
             {article.title}
           </h1>
-          {/* Тонка лінія — h-[1px] оптимізовано до h-px */}
+
           <div className="w-20 h-px bg-brand-gold/30 pt-2"></div>
         </div>
 
-        {/* ================= ГАЛЕРЕЯ ЗОБРАЖЕНЬ ПОСТА (МУЛЬТИФОТО) ================= */}
         {images.length > 0 && (
           <div className="w-full flex flex-col items-center mb-10 sm:mb-14">
-            {/* 
-              Головне велике фото (активне зараз).
-              Клас aspect-[16/9] замінено на сучасний aspect-video!
-            */}
             <div className="relative w-full aspect-video rounded-2xl border border-brand-gold/15 bg-brand-card overflow-hidden flex items-center justify-center p-4">
               <div className="relative w-full h-full rounded-xl overflow-hidden bg-background/40">
                 <Image
@@ -186,7 +170,6 @@ export default function BlogPostPage() {
                 />
               </div>
 
-              {/* Стрілочки навігації (показуємо лише якщо фото більше ніж одне) */}
               {images.length > 1 && (
                 <>
                   <button
@@ -205,7 +188,6 @@ export default function BlogPostPage() {
               )}
             </div>
 
-            {/* Прев'ю-іконки під головним фото */}
             {images.length > 1 && (
               <div className="flex gap-3 mt-4 overflow-x-auto max-w-full py-2">
                 {images.map((img, idx) => (
@@ -231,7 +213,6 @@ export default function BlogPostPage() {
           </div>
         )}
 
-        {/* ================= ТЕКСТ СТАТТІ ================= */}
         <div className="prose prose-invert max-w-none text-left">
           {article.body ? (
             <PortableText
@@ -245,7 +226,6 @@ export default function BlogPostPage() {
           )}
         </div>
 
-        {/* Розділювач та футер поста — h-[1px] замінено на h-px */}
         <div className="w-full h-px bg-brand-gold/10 my-12 sm:my-16"></div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">

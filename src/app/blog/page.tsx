@@ -6,13 +6,12 @@ import Image from "next/image";
 import { client, urlFor } from "@/lib/sanity";
 import Container from "@/components/Container";
 
-// Інтерфейс для постів із Sanity (позбулися any для mainImage)
 interface Post {
   _id: string;
   title: string;
   slug: { current: string };
   publishedAt: string;
-  mainImage: Record<string, unknown>; // Безпечний тип замість any
+  mainImage: Record<string, unknown>;
   excerpt: string;
   categoryName?: string;
 }
@@ -27,13 +26,11 @@ export default function BlogPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 1. Завантаження постів та категорій з Sanity
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
 
-        // GROQ-запит для отримання постів з їхніми категоріями
         const postsQuery = `*[_type == "post"] | order(publishedAt desc) {
           _id,
           title,
@@ -47,7 +44,6 @@ export default function BlogPage() {
         const fetchedPosts: Post[] = await client.fetch(postsQuery);
         setPosts(fetchedPosts);
 
-        // Динамічно збираємо всі унікальні категорії, які є в опублікованих постах
         const uniqueCategories = new Set<string>();
         fetchedPosts.forEach((post) => {
           if (post.categoryName) {
@@ -66,7 +62,6 @@ export default function BlogPage() {
     fetchData();
   }, []);
 
-  // 2. Фільтрація статей за обраною категорією
   const filteredArticles = useMemo(() => {
     if (selectedCategory === "Всі категорії") {
       return posts;
@@ -74,23 +69,19 @@ export default function BlogPage() {
     return posts.filter((post) => post.categoryName === selectedCategory);
   }, [posts, selectedCategory]);
 
-  // 3. Розрахунок загальної кількості сторінок
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
 
-  // 4. Зріз статей для поточної сторінки
   const currentArticles = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   }, [filteredArticles, currentPage]);
 
-  // Зміна категорії з автоматичним скиданням сторінки на 1-шу
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
     setIsDropdownOpen(false);
   };
 
-  // Скидання всіх фільтрів
   const handleResetFilters = () => {
     setSelectedCategory("Всі категорії");
     setCurrentPage(1);
@@ -99,7 +90,6 @@ export default function BlogPage() {
   return (
     <main className="w-full min-h-screen bg-background pt-28 pb-20 sm:pt-36 sm:pb-32">
       <Container className="flex flex-col items-center">
-        {/* Хедер сторінки */}
         <div className="text-center max-w-2xl flex flex-col items-center space-y-4 mb-12 sm:mb-16">
           <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif">
             Блог
@@ -107,16 +97,11 @@ export default function BlogPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold leading-tight">
             Освітні матеріали
           </h1>
-          {/* Тонка лінія — h-[1px] оптимізовано до h-px */}
+
           <div className="w-16 h-px bg-brand-gold/30 my-2"></div>
         </div>
 
-        {/* ПАНЕЛЬ ФІЛЬТРІВ */}
         <div className="w-full max-w-6xl flex items-center justify-between gap-4 mb-10 md:mb-14 relative z-20">
-          {/* 
-            Кастомний Селект (Випадаючий список категорій)
-            Ширина w-[220px] та sm:w-[260px] замінена на красиві класи v4: w-55 та sm:w-65
-          */}
           <div className="relative w-55 sm:w-65">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -152,7 +137,6 @@ export default function BlogPage() {
             )}
           </div>
 
-          {/* Кнопка швидкого скидання фільтрів */}
           <button
             onClick={handleResetFilters}
             className="text-xs sm:text-sm text-brand-gold/60 hover:text-brand-gold transition-colors font-serif italic pb-0.5 border-b border-dashed border-brand-gold/30 hover:border-brand-gold/80 cursor-pointer"
@@ -161,7 +145,6 @@ export default function BlogPage() {
           </button>
         </div>
 
-        {/* СТАН ЗАВАНТАЖЕННЯ */}
         {isLoading ? (
           <div className="py-20 text-center">
             <div className="inline-block w-8 h-8 border-2 border-brand-gold/35 border-t-brand-gold rounded-full animate-spin"></div>
@@ -170,17 +153,12 @@ export default function BlogPage() {
             </p>
           </div>
         ) : currentArticles.length > 0 ? (
-          /* СІТКА СТАТЕЙ (Завантажується напряму з Sanity) */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl mb-16">
             {currentArticles.map((article) => (
               <article
                 key={article._id}
                 className="flex flex-col rounded-2xl border border-brand-gold/15 overflow-hidden bg-brand-card hover:border-brand-gold/40 transition-all duration-300 group"
               >
-                {/* 
-                  Зображення статті. 
-                  Клас aspect-[4/3] оптимізовано до aspect-4/3
-                */}
                 <div className="aspect-4/3 w-full bg-background/50 border-b border-brand-gold/10 relative overflow-hidden flex items-center justify-center">
                   {article.mainImage ? (
                     <Image
@@ -196,7 +174,6 @@ export default function BlogPage() {
                   )}
                 </div>
 
-                {/* Текстовий блок */}
                 <div className="p-6 sm:p-8 flex flex-col flex-1 text-left space-y-4">
                   <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-widest font-serif">
                     {article.categoryName || "Без категорії"}
@@ -231,10 +208,8 @@ export default function BlogPage() {
           </div>
         )}
 
-        {/* ІНТЕРАКТИВНА ПАГІНАЦІЯ */}
         {!isLoading && totalPages > 1 && (
           <div className="flex items-center justify-center gap-4 mt-6">
-            {/* Кнопка Назад */}
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
@@ -243,7 +218,6 @@ export default function BlogPage() {
               &lt;
             </button>
 
-            {/* Номери сторінок */}
             {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(
               (page) => (
                 <button
@@ -260,7 +234,6 @@ export default function BlogPage() {
               ),
             )}
 
-            {/* Кнопка Вперед */}
             <button
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))

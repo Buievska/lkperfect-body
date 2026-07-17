@@ -6,13 +6,12 @@ import Image from "next/image";
 import { client, urlFor } from "@/lib/sanity";
 import Container from "../Container";
 
-// Інтерфейс для отриманих даних з Sanity (позбулися any для mainImage)
 interface SanityArticlePreview {
   _id: string;
   title: string;
   slug: { current: string };
   excerpt?: string;
-  mainImage?: Record<string, unknown>; // Замість any використовуємо безпечний об'єкт
+  mainImage?: Record<string, unknown>;
   categoryName?: string;
 }
 
@@ -20,12 +19,11 @@ export default function BlogPreview() {
   const [articles, setArticles] = useState<SanityArticlePreview[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Отримуємо 3 останні пости
   useEffect(() => {
     async function fetchLatestArticles() {
       try {
         setIsLoading(true);
-        // Запит GROQ: беремо тип "post", сортуємо за датою (новіші попереду) і обмежуємо до 3 штук [0...3]
+
         const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
           _id,
           title,
@@ -50,7 +48,6 @@ export default function BlogPreview() {
   return (
     <section className="w-full py-20 md:py-28 bg-brand-card border-t border-brand-gold/5">
       <Container className="flex flex-col items-center">
-        {/* Шапка блоку */}
         <div className="text-center max-w-2xl flex flex-col items-center space-y-4 mb-12 md:mb-16">
           <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif">
             Блог
@@ -58,30 +55,26 @@ export default function BlogPreview() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-gold leading-tight">
             Освітні матеріали
           </h2>
-          {/* Тонка золота лінія — h-[1px] замінено на h-px */}
+
           <div className="w-16 h-px bg-brand-gold/30 my-2"></div>
           <p className="text-sm sm:text-base text-foreground/80 font-serif italic font-light leading-relaxed">
-            Прості пояснення про тіло, рух, розвиток дітей та здоров’я.{" "}
+            Прості пояснення про тіло, рух, розвиток дітей та здоров&apos;я.{" "}
             <br className="hidden sm:inline" />
             Практичні рекомендації для батьків і дорослих.
           </p>
         </div>
 
-        {/* Стан завантаження (скелетон або спінер) */}
         {isLoading ? (
           <div className="flex flex-col items-center py-10">
             <div className="w-6 h-6 border-2 border-brand-gold/35 border-t-brand-gold rounded-full animate-spin"></div>
           </div>
         ) : articles.length === 0 ? (
-          /* Якщо статей ще немає в базі */
           <p className="text-sm text-brand-gold/40 font-serif italic py-10">
             Нові матеріали готуються до публікації.
           </p>
         ) : (
-          /* Сітка карток з реальними даними */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl mb-12 md:mb-16">
             {articles.map((article, idx) => {
-              // Застосовуємо приховування третьої картки на планшетах (як було у твоїй верстці)
               const cardClassName = idx === 2 ? "hidden lg:flex" : "flex";
 
               return (
@@ -89,10 +82,6 @@ export default function BlogPreview() {
                   key={article._id}
                   className={`${cardClassName} flex flex-col rounded-2xl border border-brand-gold/15 overflow-hidden bg-brand-card hover:border-brand-gold/40 transition-all duration-300 group`}
                 >
-                  {/* 
-                    Контейнер для зображення. 
-                    Клас aspect-[4/3] замінено на aspect-4/3
-                  */}
                   <div className="aspect-4/3 w-full bg-background/50 border-b border-brand-gold/10 relative overflow-hidden flex items-center justify-center">
                     {article.mainImage ? (
                       <Image
@@ -109,7 +98,6 @@ export default function BlogPreview() {
                     )}
                   </div>
 
-                  {/* Контент картки */}
                   <div className="p-6 sm:p-8 flex flex-col flex-1 bg-background text-left space-y-4">
                     <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-widest font-serif">
                       {article.categoryName || "Загальне"}
@@ -124,7 +112,6 @@ export default function BlogPreview() {
                         "Натисніть нижче, щоб прочитати повний текст статті..."}
                     </p>
 
-                    {/* Динамічне посилання за slug.current */}
                     <Link
                       href={`/blog/${article.slug.current}`}
                       className="inline-flex items-center gap-2 text-xs sm:text-sm text-brand-gold/80 hover:text-brand-gold font-serif italic group/link pt-2"

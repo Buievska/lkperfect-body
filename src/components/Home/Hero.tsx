@@ -19,7 +19,6 @@ export default function Hero() {
     <section className="w-full min-h-[calc(100vh-80px)] flex items-center py-12 bg-background">
       <Container className="flex justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center w-full max-w-5xl mx-auto">
-          {/* ЛІВА КОЛОНКА: Текст з новим лімітом ширини */}
           <div className="flex flex-col items-start text-left space-y-6 w-full lg:max-w-450px">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold leading-tight">
               Досконале тіло - <br />
@@ -33,7 +32,6 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* ПРАВА КОЛОНКА: Слайдер з чистими пропорціями та шириною */}
           <div className="w-full flex justify-center lg:justify-end">
             <div className="w-full max-w-500px p-3 sm:p-4 rounded-2xl border border-brand-gold/30 bg-background shadow-lg">
               <div className="relative aspect-4/3 sm:aspect-16/10 w-full rounded-xl overflow-hidden bg-brand-card">
@@ -54,7 +52,6 @@ export default function Hero() {
                   </div>
                 ))}
 
-                {/* Індикатори */}
                 <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
                   {images.map((_, index) => (
                     <button

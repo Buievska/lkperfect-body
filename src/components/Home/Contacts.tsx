@@ -3,17 +3,13 @@ import Container from "../Container";
 
 export default function Contacts() {
   return (
-    // Додано id="contacts" для плавного переходу з навігаційного меню
     <section
       id="contacts"
       className="w-full py-20 md:py-28 bg-background border-t border-brand-gold/5"
     >
       <Container>
-        {/* Головна сітка блоку: 1 стовпчик на мобільних, 2 стовпчики на планшетах та десктопах */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
-          {/* ЛІВА ЧАСТИНА: Контакти (Займає 7 колонок на великих екранах) */}
           <div className="lg:col-span-7 flex flex-col space-y-8 sm:space-y-10 text-left">
-            {/* Надзаголовок та Заголовок */}
             <div className="space-y-3">
               <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif block">
                 Контакти та бронювання
@@ -21,13 +17,11 @@ export default function Contacts() {
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold leading-tight">
                 Записатися на <br /> прийом
               </h2>
-              {/* Тонка лінія — h-[1px] оптимізовано до h-px */}
+
               <div className="w-16 h-px bg-brand-gold/30 pt-1"></div>
             </div>
 
-            {/* Списочок контактних даних з круглими іконками */}
             <div className="space-y-6">
-              {/* Телефон */}
               <a
                 href="tel:+380956586855"
                 className="flex items-center gap-4 sm:gap-6 group transition-all duration-300"
@@ -40,7 +34,6 @@ export default function Contacts() {
                 </span>
               </a>
 
-              {/* Email */}
               <a
                 href="mailto:lilikarevych@gmail.com"
                 className="flex items-center gap-4 sm:gap-6 group transition-all duration-300"
@@ -53,7 +46,6 @@ export default function Contacts() {
                 </span>
               </a>
 
-              {/* Адреса з посиланням на Google Maps та безпечним екрануванням апострофа */}
               <a
                 href="https://maps.app.goo.gl/BoVbmLqWLTDeNdJv8"
                 target="_blank"
@@ -68,15 +60,14 @@ export default function Contacts() {
                     м. Кам&apos;янець-Подільський, <br />
                     вул. Матросова 6/б
                   </span>
-                  {/* Маленька підказка знизу */}
+
                   <span className="text-[10px] sm:text-xs text-brand-gold/40 font-serif italic group-hover:text-brand-gold/60 transition-colors">
-                    Відкрити на Google Картах ↗
+                    Відкрити на Google Картах
                   </span>
                 </div>
               </a>
             </div>
 
-            {/* Кнопка запису (Для мобільних по центру, для ПК — зліва) */}
             <div className="pt-4 flex justify-center lg:justify-start">
               <a
                 href="tel:+380956586855"
@@ -87,7 +78,6 @@ export default function Contacts() {
             </div>
           </div>
 
-          {/* ПРАВА ЧАСТИНА: Картка "Мій підхід" (Займає 5 колонок на великих екранах) */}
           <div className="lg:col-span-5 w-full">
             <div className="bg-brand-card border border-brand-gold/15 rounded-3xl p-8 sm:p-10 text-left space-y-6 backdrop-blur-sm">
               <h3 className="text-lg sm:text-xl font-serif text-brand-gold italic">
