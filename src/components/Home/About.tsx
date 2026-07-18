@@ -25,9 +25,7 @@ export default function About() {
           <div className="col-span-1 lg:col-span-7 flex flex-col items-start text-left space-y-6 order-2 lg:order-2">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-gold leading-tight">
               Ласкаво запрошую до <br />
-              <span className="italic font-light text-white">
-                Perfect Body LK
-              </span>
+              <span className="italic font-light">Perfect Body LK</span>
             </h2>
 
             <div className="w-20 h-px bg-brand-gold/60"></div>

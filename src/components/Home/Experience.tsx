@@ -66,6 +66,10 @@ export default function Experience() {
                 <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
                 <span>Сенсорна інтеграція</span>
               </li>
+              <li className="flex items-center gap-4">
+                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span>Косметологія</span>
+              </li>
             </ul>
           </div>
 

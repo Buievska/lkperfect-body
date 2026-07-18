@@ -94,11 +94,11 @@ export default function Services() {
         </div>
 
         <div className="flex flex-col md:flex-row flex-wrap md:justify-center items-center gap-4 md:gap-8 lg:gap-16 text-brand-gold/90 font-serif italic text-base sm:text-lg">
-          <span className="text-center">Супровід на кожному етапі.</span>
+          <span className="text-center">Індивідуальний підхід</span>
           <span className="hidden md:inline text-brand-gold/30">|</span>
           <span className="text-center">Персональні програми</span>
           <span className="hidden md:inline text-brand-gold/30">|</span>
-          <span className="text-center">Індивідуальний підхід</span>
+          <span className="text-center">Супровід на кожному етапі</span>
         </div>
       </Container>
     </section>

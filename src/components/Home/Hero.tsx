@@ -22,9 +22,7 @@ export default function Hero() {
           <div className="flex flex-col items-start text-left space-y-6 w-full lg:max-w-450px">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold leading-tight">
               Досконале тіло - <br />
-              <span className="italic font-light text-white">
-                природний рух
-              </span>
+              <span className="italic font-light">природний рух</span>
             </h1>
             <p className="text-lg sm:text-xl text-brand-gold/90 font-serif italic leading-relaxed">
               Розуміти своє тіло. Рухатися вільно. <br />

@@ -7,61 +7,62 @@ import Container from "@/components/Container";
 type Tab = "diplomas" | "statistics";
 
 const diplomasData = [
-  { id: 1, title: "Диплом Фізіотерапевта", image: "/certificate-19.jpg" },
-  { id: 2, title: "Диплом Дієтолога", image: "/certificate-20.jpg" },
-
-  { id: 3, title: "Сертифікат Психосоматика", image: "/certificate-3.jpg" },
-  { id: 4, title: "Сертифікат FARMONA", image: "/certificate-4.jpg" },
-  { id: 5, title: "Сертифікат BIELENDA", image: "/certificate-5.jpg" },
+  { id: 1, title: "Сертифікат Фізіотерапевта", image: "/certificate-14.jpg" },
+  { id: 2, title: "Диплом Фізіотерапевта", image: "/certificate-19.jpg" },
+  { id: 3, title: "Сертифікат Масажист", image: "/certificate-10.jpg" },
+  { id: 4, title: "Сертифікат  Масажиста", image: "/certificate-17.jpg" },
+  { id: 5, title: "Сертифікат Дитячиий масаж", image: "/certificate-2.jpg" },
+  { id: 6, title: "Сертифікат Дитячий масаж", image: "/certificate-21.jpg" },
   {
-    id: 6,
-    title: "Сертифікат педагогіка",
-    image: "/certificate-6.jpg",
-  },
-  { id: 7, title: "Сертифікат Гомеопатія", image: "/certificate-7.jpg" },
-  {
-    id: 8,
-    title: "Сертифікат Сенсорна інтеграція",
-    image: "/certificate-8.jpg",
-  },
-  {
-    id: 9,
-    title: "Сертифікат Сенсорна інтеграція",
-    image: "/certificate-9.jpg",
-  },
-  { id: 10, title: "Сертифікат Масажист", image: "/certificate-10.jpg" },
-  {
-    id: 11,
+    id: 7,
     title: "Сертифікат Техніка косметичних послуг",
     image: "/certificate-11.jpg",
   },
   {
-    id: 12,
-    title: "Сертифікат Спеціалізація у консультуванні",
-    image: "/certificate-12.jpg",
-  },
-  { id: 13, title: "Диплом Психолог-Консультант", image: "/dyploma-1.jpg" },
-  {
-    id: 14,
-    title: "Диплом Технік косметичних послуг",
-    image: "/certificate-13.jpg",
-  },
-  { id: 15, title: "Сертифікат Фізіотерапевта", image: "/certificate-14.jpg" },
-  { id: 16, title: "Сертифікат", image: "/certificate-15.jpg" },
-  {
-    id: 17,
+    id: 8,
     title: "Сертифікат Косметичні процедури",
     image: "/certificate-16.jpg",
   },
-  { id: 18, title: "Сертифікат  Масажиста", image: "/certificate-17.jpg" },
   {
-    id: 19,
+    id: 9,
+    title: "Диплом Технік косметичних послуг",
+    image: "/certificate-13.jpg",
+  },
+
+  { id: 10, title: "Сертифікат Гомеопатія", image: "/certificate-7.jpg" },
+  { id: 11, title: "Сертифікат", image: "/certificate-15.jpg" },
+  { id: 12, title: "Диплом Дієтолога", image: "/certificate-20.jpg" },
+  { id: 13, title: "Сертифікат DIETETYKPRO", image: "/certificate-1.jpg" },
+  { id: 14, title: "Сертифікат FARMONA", image: "/certificate-4.jpg" },
+  { id: 15, title: "Сертифікат BIELENDA", image: "/certificate-5.jpg" },
+  {
+    id: 16,
+    title: "Сертифікат Сенсорна інтеграція",
+    image: "/certificate-8.jpg",
+  },
+  {
+    id: 17,
+    title: "Сертифікат Сенсорна інтеграція",
+    image: "/certificate-9.jpg",
+  },
+  {
+    id: 18,
+    title: "Сертифікат педагогіка",
+    image: "/certificate-6.jpg",
+  },
+
+  { id: 19, title: "Диплом Психолог-Консультант", image: "/dyploma-1.jpg" },
+  {
+    id: 20,
+    title: "Сертифікат Спеціалізація у консультуванні",
+    image: "/certificate-12.jpg",
+  },
+  { id: 21, title: "Сертифікат Психосоматика", image: "/certificate-3.jpg" },
+  {
+    id: 22,
     title: "Сертифікат Сімейна психотерапія",
     image: "/certificate-18.jpg",
   },
-  { id: 20, title: "Сертифікат DIETETYKPRO", image: "/certificate-1.jpg" },
-  { id: 21, title: "Сертифікат Дитячиий масаж", image: "/certificate-2.jpg" },
-  { id: 22, title: "Сертифікат дитячий масаж", image: "/certificate-21.jpg" },
 ];
 
 const statisticsData = [
