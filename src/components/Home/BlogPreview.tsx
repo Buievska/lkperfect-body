@@ -49,19 +49,42 @@ export default function BlogPreview() {
     <section className="w-full py-20 md:py-28 bg-brand-card border-t border-brand-gold/5">
       <Container className="flex flex-col items-center">
         <div className="text-center max-w-2xl flex flex-col items-center space-y-4 mb-12 md:mb-16">
-          <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif">
+          <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-[0.2em] font-serif">
             Блог
           </span>
+
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-gold leading-tight">
             Освітні матеріали
           </h2>
 
           <div className="w-16 h-px bg-brand-gold/30 my-2"></div>
-          <p className="text-sm sm:text-base text-foreground/80 font-serif italic font-light leading-relaxed">
-            Прості пояснення про тіло, рух, розвиток дітей та здоров&apos;я.{" "}
-            <br className="hidden sm:inline" />
-            Практичні рекомендації для батьків і дорослих.
+
+          {/* Збільшено розмір тексту: text-base sm:text-lg lg:text-xl */}
+          <p className="text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light leading-relaxed">
+            Я переконана, що знання допомагають змінювати життя.
+            <br />
+            Саме тому ділюся простими й зрозумілими матеріалами про:
           </p>
+
+          {/* Збільшено розмір елементів списку */}
+          <ul className="text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light leading-relaxed space-y-2 pt-2 text-left sm:text-center inline-block">
+            <li className="flex items-center gap-2 justify-start sm:justify-center">
+              <span className="text-brand-gold/60">—</span>
+              <span>Тіло та його можливості</span>
+            </li>
+            <li className="flex items-center gap-2 justify-start sm:justify-center">
+              <span className="text-brand-gold/60">—</span>
+              <span>Здоровий рух та розвиток дітей</span>
+            </li>
+            <li className="flex items-center gap-2 justify-start sm:justify-center">
+              <span className="text-brand-gold/60">—</span>
+              <span>Профілактику порушень та здоров&apos;я стоп</span>
+            </li>
+            <li className="flex items-center gap-2 justify-start sm:justify-center">
+              <span className="text-brand-gold/60">—</span>
+              <span>Практичні поради для батьків і дорослих</span>
+            </li>
+          </ul>
         </div>
 
         {isLoading ? (
@@ -69,7 +92,7 @@ export default function BlogPreview() {
             <div className="w-6 h-6 border-2 border-brand-gold/35 border-t-brand-gold rounded-full animate-spin"></div>
           </div>
         ) : articles.length === 0 ? (
-          <p className="text-sm text-brand-gold/40 font-serif italic py-10">
+          <p className="text-base text-brand-gold/50 font-serif italic py-10">
             Нові матеріали готуються до публікації.
           </p>
         ) : (
@@ -92,29 +115,30 @@ export default function BlogPreview() {
                         sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
                       />
                     ) : (
-                      <span className="text-brand-gold/20 font-serif italic text-sm group-hover:scale-105 transition-transform duration-500">
+                      <span className="text-brand-gold/30 font-serif italic text-base group-hover:scale-105 transition-transform duration-500">
                         Зображення відсутнє
                       </span>
                     )}
                   </div>
 
                   <div className="p-6 sm:p-8 flex flex-col flex-1 bg-background text-left space-y-4">
-                    <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-widest font-serif">
+                    <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-widest font-serif">
                       {article.categoryName || "Загальне"}
                     </span>
 
-                    <h3 className="text-lg sm:text-xl font-serif text-brand-gold leading-snug group-hover:text-brand-gold/90 transition-colors line-clamp-2">
+                    <h3 className="text-xl sm:text-2xl font-serif text-brand-gold leading-snug group-hover:text-brand-gold/90 transition-colors line-clamp-2">
                       {article.title}
                     </h3>
 
-                    <p className="text-sm text-foreground/70 font-serif italic font-light leading-relaxed flex-1 line-clamp-3">
+                    {/* Збільшено опис статті: text-base sm:text-lg */}
+                    <p className="text-base sm:text-lg text-foreground/85 font-serif italic font-light leading-relaxed flex-1 line-clamp-3">
                       {article.excerpt ||
                         "Натисніть нижче, щоб прочитати повний текст статті..."}
                     </p>
 
                     <Link
                       href={`/blog/${article.slug.current}`}
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm text-brand-gold/80 hover:text-brand-gold font-serif italic group/link pt-2"
+                      className="inline-flex items-center gap-2 text-sm sm:text-base text-brand-gold/90 hover:text-brand-gold font-serif italic group/link pt-2"
                     >
                       <span>Переглянути повний текст</span>
                       <span className="transform group-hover/link:translate-x-1 transition-transform duration-300">
@@ -130,7 +154,7 @@ export default function BlogPreview() {
 
         <Link
           href="/blog"
-          className="px-8 py-3 rounded-md border border-brand-gold/30 text-brand-gold hover:bg-brand-gold hover:text-background text-xs sm:text-sm uppercase tracking-[0.15em] font-serif transition-all duration-300"
+          className="px-8 py-3 rounded-md border border-brand-gold/30 text-brand-gold hover:bg-brand-gold hover:text-background text-sm sm:text-base uppercase tracking-[0.15em] font-serif transition-all duration-300"
         >
           Перейти до блогу
         </Link>

@@ -80,18 +80,20 @@ export default function Contacts() {
 
           <div className="lg:col-span-5 w-full">
             <div className="bg-brand-card border border-brand-gold/15 rounded-3xl p-8 sm:p-10 text-left space-y-6 backdrop-blur-sm">
-              <h3 className="text-lg sm:text-xl font-serif text-brand-gold italic">
+              <h3 className="text-xl sm:text-2xl font-serif text-brand-gold italic">
                 Мій підхід
               </h3>
 
-              <div className="space-y-4 text-sm sm:text-base text-foreground/80 font-serif italic font-light leading-relaxed">
+              {/* Збільшено розмір тексту: text-base sm:text-lg lg:text-xl */}
+              <div className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light leading-relaxed">
                 <p>
-                  Я працюю індивідуально. <br />
-                  Кожна людина — це особливість.
+                  Кожна людина унікальна. <br />
+                  Саме тому я працюю враховуючи вік, особливості розвитку,
+                  спосіб життя та потреби кожного.
                 </p>
                 <p>
-                  Тому важливо не лише бачити симптом, а розуміти причину, яка
-                  впливає на рух, поставу та загальний стан організму.
+                  Я прагну знайти не лише прояв проблеми, а й її причину, адже
+                  саме це допомагає досягти стійкого результату.
                 </p>
               </div>
             </div>

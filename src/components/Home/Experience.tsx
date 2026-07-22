@@ -6,10 +6,10 @@ import Image from "next/image";
 import Container from "../Container";
 
 const certificates = [
-  "/certificate-1.jpg",
-  "/certificate-2.jpg",
-  "/certificate-3.jpg",
-  "/certificate-4.jpg",
+  "/certificate-14.jpg",
+  "/certificate-19.jpg",
+  "/certificate-10.jpg",
+  "/certificate-17.jpg",
 ];
 
 export default function Experience() {
@@ -32,7 +32,7 @@ export default function Experience() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
           <div className="flex flex-col items-start text-left space-y-6 w-full">
-            <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif">
+            <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-[0.2em] font-serif">
               Кваліфікація та досвід
             </span>
 
@@ -42,39 +42,49 @@ export default function Experience() {
 
             <div className="w-20 h-px bg-brand-gold/40"></div>
 
-            <div className="space-y-2 text-base sm:text-lg text-foreground/95 font-serif italic font-light leading-relaxed">
-              <p>Освіта у двох країнах та з різних дисциплін.</p>
+            {/* Збільшено розмір тексту: text-base sm:text-lg lg:text-xl */}
+            <div className="space-y-3 text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light leading-relaxed">
+              <p>
+                Мій професійний шлях сформувався завдяки роботі в Україні та
+                Польщі.
+              </p>
               <p className="text-brand-gold/90">
-                Тіло заслуговує на те, щоб його розуміли.
+                Маю досвід роботи в медичних, реабілітаційних,
+                санаторно-курортних закладах та хоспісі в Польщі. Робота в
+                різних напрямках медичної допомоги дозволила мені сформувати
+                комплексний погляд на физичну терапію, відновлення та потреби
+                людей різного віку.
               </p>
             </div>
 
-            <ul className="space-y-4 pt-4 text-sm sm:text-base text-foreground/90 font-serif italic font-light w-full">
+            {/* Збільшено розмір елементів списку: text-base sm:text-lg lg:text-xl */}
+            <ul className="space-y-4 pt-4 text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light w-full">
               <li className="flex items-center gap-4">
-                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span className="w-8 h-px bg-brand-gold/50 shrink-0"></span>
                 <span>Фізіотерапія — Україна та Польща</span>
               </li>
               <li className="flex items-center gap-4">
-                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span className="w-8 h-px bg-brand-gold/50 shrink-0"></span>
                 <span>Психосоматика</span>
               </li>
               <li className="flex items-center gap-4">
-                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span className="w-8 h-px bg-brand-gold/50 shrink-0"></span>
                 <span>Дієтологія</span>
               </li>
               <li className="flex items-center gap-4">
-                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span className="w-8 h-px bg-brand-gold/50 shrink-0"></span>
                 <span>Сенсорна інтеграція</span>
               </li>
               <li className="flex items-center gap-4">
-                <span className="w-8 h-px bg-brand-gold/40 shrink-0"></span>
+                <span className="w-8 h-px bg-brand-gold/50 shrink-0"></span>
                 <span>Косметологія</span>
               </li>
             </ul>
           </div>
 
           <div className="w-full flex flex-col items-center justify-center">
-            <div className="relative flex items-center justify-center w-full max-w-400px sm:max-w-500px mb-6">
+            {/* Оновлено max-w-[400px] -> max-w-100 та sm:max-w-[500px] -> sm:max-w-125 */}
+            <div className="relative flex items-center justify-center w-full max-w-100 sm:max-w-125 mb-6">
               <button
                 onClick={handlePrev}
                 className="hidden sm:block absolute -left-12 lg:-left-16 z-20 text-2xl sm:text-3xl text-brand-gold/50 hover:text-brand-gold transition-colors duration-300 font-serif p-2 cursor-pointer select-none"
@@ -112,7 +122,7 @@ export default function Experience() {
                 >
                   «
                 </button>
-                <span className="text-xs text-brand-gold/60 font-serif italic">
+                <span className="text-sm text-brand-gold/70 font-serif italic">
                   {currentIndex + 1} / {certificates.length}
                 </span>
                 <button
@@ -126,7 +136,7 @@ export default function Experience() {
 
               <Link
                 href="/experience"
-                className="text-xs sm:text-sm text-brand-gold/70 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
+                className="text-sm sm:text-base text-brand-gold/80 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
               >
                 Ознайомитися з дипломами та статистикою
               </Link>
