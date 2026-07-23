@@ -5,7 +5,7 @@ import Container from "./Container";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#03362A] border-t border-brand-gold/10 py-10 sm:py-14 text-brand-gold font-serif">
+    <footer className="w-full bg-brand-card border-t border-brand-gold/10 py-10 sm:py-14 text-brand-gold font-serif">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8 w-full">
           <div className="flex justify-center md:justify-start">
