@@ -23,7 +23,7 @@ export default function Hero() {
             <div className="w-full max-w-xl p-3 sm:p-4 rounded-2xl border border-brand-gold/30 bg-background shadow-lg">
               <div className="relative aspect-4/3 sm:aspect-16/10 w-full rounded-xl overflow-hidden bg-brand-card">
                 <Image
-                  src="/hero-4.jpg"
+                  src="/hero.jpg"
                   alt="Perfect Body LK"
                   fill
                   className="object-cover"
