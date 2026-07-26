@@ -32,7 +32,7 @@ export default function Experience() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
           <div className="flex flex-col items-start text-left space-y-6 w-full">
-            <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-[0.2em] font-serif">
+            <span className="text-xs sm:text-sm text-brand-gold uppercase tracking-[0.2em] font-serif">
               Кваліфікація та досвід
             </span>
 
@@ -138,7 +138,7 @@ export default function Experience() {
                 href="/experience"
                 className="text-sm sm:text-base text-brand-gold/80 hover:text-brand-gold border-b border-brand-gold/30 hover:border-brand-gold/90 pb-1 font-serif italic transition-all duration-300 text-center"
               >
-                Ознайомитися з дипломами та статистикою
+                Ознайомитися з дипломами та сертифікатами
               </Link>
             </div>
           </div>

@@ -32,14 +32,16 @@ export default function Footer() {
 
             <div className="flex items-center gap-5">
               <a
-                href="https://www.facebook.com/LKperfectBody"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:lilikarevych@gmail.com"
                 className="w-10 h-10 rounded-full bg-brand-gold text-[#03362A] flex items-center justify-center hover:scale-105 hover:bg-brand-gold/90 transition-all duration-300"
-                aria-label="Facebook"
+                aria-label="Email"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h3V1H13c-3.3 0-5 1.7-5 5v2z" />
+                <svg
+                  className="w-5 h-5 fill-none stroke-current stroke-2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </a>
 

@@ -4,7 +4,7 @@ export default function Manifesto() {
   return (
     <section className="w-full py-20 md:py-32 bg-brand-card border-t border-brand-gold/5">
       <Container className="flex flex-col items-center text-center">
-        <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] mb-3 font-serif">
+        <span className="text-[10px] sm:text-xs text-brand-gold uppercase tracking-[0.2em] mb-3 font-serif">
           Мій маніфест спеціаліста
         </span>
 

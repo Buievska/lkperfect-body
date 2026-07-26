@@ -11,7 +11,7 @@ export default function Contacts() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
           <div className="lg:col-span-7 flex flex-col space-y-8 sm:space-y-10 text-left">
             <div className="space-y-3">
-              <span className="text-[10px] sm:text-xs text-brand-gold/50 uppercase tracking-[0.2em] font-serif block">
+              <span className="text-[10px] sm:text-xs text-brand-gold uppercase tracking-[0.2em] font-serif block">
                 Контакти та бронювання
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-gold leading-tight">
@@ -84,8 +84,7 @@ export default function Contacts() {
                 Мій підхід
               </h3>
 
-              {/* Збільшено розмір тексту: text-base sm:text-lg lg:text-xl */}
-              <div className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/90 font-serif italic font-light leading-relaxed">
+              <div className="space-y-4 text-base sm:text-lg lg:text-xl text-brand-gold font-serif italic font-light leading-relaxed">
                 <p>
                   Кожна людина унікальна. <br />
                   Саме тому я працюю враховуючи вік, особливості розвитку,

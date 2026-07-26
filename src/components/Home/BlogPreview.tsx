@@ -49,7 +49,7 @@ export default function BlogPreview() {
     <section className="w-full py-20 md:py-28 bg-brand-card border-t border-brand-gold/5">
       <Container className="flex flex-col items-center">
         <div className="text-center max-w-2xl flex flex-col items-center space-y-4 mb-12 md:mb-16">
-          <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-[0.2em] font-serif">
+          <span className="text-xs sm:text-sm text-brand-gold uppercase tracking-[0.2em] font-serif">
             Блог
           </span>
 

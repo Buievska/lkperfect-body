@@ -7,7 +7,7 @@ export default function Services() {
       className="w-full py-16 md:py-24 bg-background"
     >
       <Container className="flex flex-col items-center text-center">
-        <span className="text-xs sm:text-sm text-brand-gold/60 uppercase tracking-widest mb-2 font-serif">
+        <span className="text-xs sm:text-sm text-brand-gold uppercase tracking-widest mb-2 font-serif">
           Спеціалізація
         </span>
 
@@ -35,13 +35,15 @@ export default function Services() {
           <div className="relative p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-gold/30 flex flex-col justify-between">
             <div>
               <h3 className="text-2xl sm:text-3xl font-serif text-brand-gold mb-4">
-                Індивідуальні консультації
+                Індивідуальні консультації /
+                <br />
+                Онлайн консультації
               </h3>
 
               <div className="w-16 h-px bg-brand-gold/30 mb-6"></div>
 
               {/* Збільшено розмір списку: text-base sm:text-lg lg:text-xl */}
-              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/95 font-serif italic font-light">
+              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-brand-gold font-serif italic font-light">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-gold/60">—</span>
                   <span>Комплексна оцінка руху.</span>
@@ -71,7 +73,7 @@ export default function Services() {
 
               <div className="w-16 h-px bg-brand-gold/30 mb-6"></div>
 
-              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/95 font-serif italic font-light">
+              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-brand-gold font-serif italic font-light">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-gold/60">—</span>
                   <span>Оцінка фізичного розвитку.</span>
@@ -105,7 +107,7 @@ export default function Services() {
 
               <div className="w-16 h-px bg-brand-gold/30 mb-6"></div>
 
-              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/95 font-serif italic font-light">
+              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-brand-gold font-serif italic font-light">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-gold/60">—</span>
                   <span>Відновлення природного руху.</span>
@@ -150,7 +152,7 @@ export default function Services() {
 
               <div className="w-16 h-px bg-brand-gold/30 mb-6"></div>
 
-              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-foreground/95 font-serif italic font-light">
+              <ul className="space-y-4 text-base sm:text-lg lg:text-xl text-brand-gold font-serif italic font-light">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-gold/60">—</span>
                   <span>Робота з рубцем після кесаревого розтину.</span>
